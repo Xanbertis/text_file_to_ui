@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.IO;
 
 namespace Assignment2._1
 {
@@ -30,8 +31,37 @@ namespace Assignment2._1
             {
                 // The user selected a file, do something with it
                 string selectedFilePath = openFileDialog2.FileName;
-                // ... do something with the selectedFilePath ...
+
+
+                UserFileReader reader = new UserFileReader();
+                reader.UserFileName = selectedFilePath;
+                string fileContent = reader.readData();
+
+                // Print the file content to the terminal
+                Console.WriteLine(fileContent);
             }
+        }
+    }
+
+    public class UserFileReader
+    {
+        public string UserFileName { get; set; }
+
+        public string readData()
+        {
+            string content = "";
+
+            try
+            {
+                content = File.ReadAllText(UserFileName);
+            }
+            catch (IOException e)
+            {
+                // Handle the exception
+                MessageBox.Show("An error occurred while reading the file: " + e.Message);
+            }
+
+            return content;
         }
     }
 }
