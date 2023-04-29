@@ -46,12 +46,13 @@ namespace Assignment2._1
 
                 userDisplayer = new UserDisplayer(parser.Normalized_data);
                 parser.CreateUser(userDisplayer);
-                parser.StoreUserInfos();
+
+                UserInfoForm form = parser.StoreUserInfos();
 
 
+                Console.WriteLine($"LeNom : {form.Name}");
 
-
-    }
+            }
         }
 
         private void textBox1_TextChanged(object sender, EventArgs e)
@@ -123,9 +124,9 @@ namespace Assignment2._1
             User user = new User(Normalized_data);
         }
 
-        public void StoreUserInfos()
+        public UserInfoForm StoreUserInfos()
         {
-            User_Displayer.createForm();
+            return User_Displayer.createForm();
         }
 
         public void PrintNormalizedData()
@@ -161,7 +162,7 @@ namespace Assignment2._1
             this.Input_data = normalized_data;
         }
 
-        public void createForm()
+        public UserInfoForm createForm()
         {
             UserInfoForm form = new UserInfoForm();
 
@@ -174,7 +175,7 @@ namespace Assignment2._1
                 }
             }
 
-            form.PrintForm();
+            return form;
         }
     }
 
@@ -225,11 +226,6 @@ namespace Assignment2._1
                         break;
                 }
             }
-        }
-
-        public void PrintForm()
-        {
-            
         }
 
         public void Show()
