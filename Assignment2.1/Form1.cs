@@ -13,6 +13,7 @@ namespace Assignment2._1
 {
     public partial class Form1 : Form
     {
+
         public Form1()
         {
             InitializeComponent();
@@ -49,16 +50,25 @@ namespace Assignment2._1
 
                 UserInfoForm form = parser.StoreUserInfos();
 
+                textBox1.Text = form.Name + form.Surname;
+                textBox2.Text = form.Year_of_birth;
+                textBox3.Text = form.City_of_origin;
+                textBox4.Text = form.Faculty;
+                textBox5.Text = form.Role;
+                textBox6.Text = form.RoleSpecAttr;
 
-                Console.WriteLine($"LeNom : {form.Name}");
+            
 
             }
         }
 
-        private void textBox1_TextChanged(object sender, EventArgs e)
-        {
+        private void textBox1_TextChanged(object sender, EventArgs e){}
+        private void textBox2_TextChanged(object sender, EventArgs e) { }
+        private void textBox3_TextChanged(object sender, EventArgs e) { }
+        private void textBox4_TextChanged(object sender, EventArgs e) { }
+        private void textBox5_TextChanged(object sender, EventArgs e) { }
+        private void textBox6_TextChanged(object sender, EventArgs e) { }
 
-        }
     }
 
     public class UserFileReader
