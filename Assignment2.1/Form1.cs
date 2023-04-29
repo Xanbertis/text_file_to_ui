@@ -39,6 +39,10 @@ namespace Assignment2._1
 
                 // Print the file content to the terminal
                 Console.WriteLine(fileContent);
+
+                UserParser parser = new UserParser(fileContent);
+
+                
             }
         }
     }
@@ -109,6 +113,18 @@ namespace Assignment2._1
         {
             // Create a new instance of UserDisplayer
             UserDisplayer userDisplayer = new UserDisplayer();
+        }
+
+        public void PrintNormalizedData()
+        {
+            foreach (var dict in Normalized_data)
+            {
+                foreach (var kvp in dict)
+                {
+                    Console.WriteLine($"{kvp.Key}: {kvp.Value}");
+                }
+                Console.WriteLine();
+            }
         }
     }
 
