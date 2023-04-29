@@ -42,6 +42,9 @@ namespace Assignment2._1
 
                 UserParser parser = new UserParser(fileContent);
 
+                parser.CreateUser();
+                parser.StoreUserInfos();
+
                 
             }
         }
@@ -100,11 +103,8 @@ namespace Assignment2._1
             }
         }
 
-        public void CreateUser(string user_data)
+        public void CreateUser()
         {
-            // Split the user data into separate fields
-            string[] fields = user_data.Split(';');
-
             // Create a new User object with the fields
             User user = new User(Normalized_data);
         }
@@ -112,7 +112,8 @@ namespace Assignment2._1
         public void StoreUserInfos()
         {
             // Create a new instance of UserDisplayer
-            UserDisplayer userDisplayer = new UserDisplayer();
+            UserDisplayer userDisplayer = new UserDisplayer(this.Normalized_data);
+            userDisplayer.createForm();
         }
 
         public void PrintNormalizedData()
@@ -140,10 +141,102 @@ namespace Assignment2._1
 
     class UserDisplayer
     {
+        public List<Dictionary<string, string>> Input_data;
+        public User User_to_display;
+
+        public UserDisplayer(List<Dictionary<string, string>> normalized_data)
+        {
+            this.Input_data = normalized_data;
+        }
+
+        public void createForm()
+        {
+            UserInfoForm form = new UserInfoForm();
+
+            // Add each key-value pair to the form
+            foreach (Dictionary<string, string> dict in Input_data)
+            {
+                foreach (KeyValuePair<string, string> kvp in dict)
+                {
+                    form.addUserInfo(kvp.Key, kvp.Value);
+                }
+            }
+
+            form.Show();
+        }
+
+
         public void DisplayUserInfo(string[] user_data)
         {
             throw new NotImplementedException();
         }
     }
+
+    class UserInfoForm
+    {
+        public string Name;
+        public string Surname;
+        public string Year_of_birth;
+        public string City_of_origin;
+        public string Faculty;
+        public string Role;
+        public string RoleSpecAttr;
+        public string File_accessed_times;
+
+        public void addUserInfo(string key, string value)
+        {
+            if (key == "Department" || key == "Favorite course")
+            {
+                this.RoleSpecAttr = value;
+            }
+            else
+            {
+                switch (key)
+                {
+                    case "Name":
+                        this.Name = value;
+                        break;
+                    case "Surname":
+                        this.Surname = value;
+                        break;
+                    case "Year of birth":
+                        this.Year_of_birth = value;
+                        break;
+                    case "City of origin":
+                        this.City_of_origin = value;
+                        break;
+                    case "Faculty":
+                        this.Faculty = value;
+                        break;
+                    case "Role":
+                        this.Role = value;
+                        break;
+                    case "File accessed times":
+                        this.File_accessed_times = value;
+                        break;
+                    default:
+                        // Handle unknown key
+                        break;
+                }
+            }
+        }
+
+        public void Show()
+        {
+            Console.WriteLine($"Begin Show");
+            Console.WriteLine($"Name: {this.Name}");
+            Console.WriteLine($"Surname: {this.Surname}");
+            Console.WriteLine($"Year of birth: {this.Year_of_birth}");
+            Console.WriteLine($"City of origin: {this.City_of_origin}");
+            Console.WriteLine($"Faculty: {this.Faculty}");
+            Console.WriteLine($"Role: {this.Role}");
+            Console.WriteLine($"Role specific attribute: {this.RoleSpecAttr}");
+            Console.WriteLine($"File accessed times: {this.File_accessed_times}");
+            Console.WriteLine($"End of Show");
+        }
+    }
+
+
+
 
 }
