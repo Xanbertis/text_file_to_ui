@@ -50,25 +50,31 @@ namespace Assignment2._1
 
                 UserInfoForm form = parser.StoreUserInfos();
 
-                textBox1.Text = form.Name + form.Surname;
+                if(form.Role == "student")
+                {
+                    label6.Text = "Favorite course";
+                }
+                else
+                {
+                    label6.Text = "Department";
+                }
+
+                textBox1.Text = $"{form.Name} {form.Surname}";
                 textBox2.Text = form.Year_of_birth;
                 textBox3.Text = form.City_of_origin;
                 textBox4.Text = form.Faculty;
                 textBox5.Text = form.Role;
                 textBox6.Text = form.RoleSpecAttr;
 
-            
-
             }
         }
 
-        private void textBox1_TextChanged(object sender, EventArgs e){}
+        private void textBox1_TextChanged(object sender, EventArgs e) { }
         private void textBox2_TextChanged(object sender, EventArgs e) { }
         private void textBox3_TextChanged(object sender, EventArgs e) { }
         private void textBox4_TextChanged(object sender, EventArgs e) { }
         private void textBox5_TextChanged(object sender, EventArgs e) { }
         private void textBox6_TextChanged(object sender, EventArgs e) { }
-
     }
 
     public class UserFileReader
