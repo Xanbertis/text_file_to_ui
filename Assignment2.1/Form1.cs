@@ -158,16 +158,6 @@ namespace Assignment2._1
         }
     }
 
-    class User
-    {
-        public List<Dictionary<string, string>> normalized_data;
-
-        public User(List<Dictionary<string, string>> normalized_data)
-        {
-            this.normalized_data = normalized_data;
-        }
-    }
-
     class UserDisplayer
     {
         public List<Dictionary<string, string>> Input_data;
