@@ -20,6 +20,7 @@ namespace Assignment2._1
         }
 
         private UserDisplayer userDisplayer;
+        private Int16 accessedTimes;
 
         private void button2_Click(object sender, EventArgs e)
         {
@@ -65,6 +66,15 @@ namespace Assignment2._1
                 textBox4.Text = form.Faculty;
                 textBox5.Text = form.Role;
                 textBox6.Text = form.RoleSpecAttr;
+                this.accessedTimes = Int16.Parse(form.File_accessed_times);
+                this.accessedTimes++;
+
+                // Write the updated value of accessedTimes back to the file
+                using (StreamWriter writer = new StreamWriter(selectedFilePath))
+                {
+                    writer.Write(fileContent.Replace($"File accessed times={form.File_accessed_times}", $"File accessed times={this.accessedTimes}"));
+                }
+
 
             }
         }
