@@ -57,6 +57,7 @@
     <Compile Include="User.cs" />
     <Compile Include="UserDisplayer.cs" />
     <Compile Include="UserFileReader.cs" />
+    <Compile Include="UserInfoForm.cs" />
     <Compile Include="UserParser.cs" />
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
