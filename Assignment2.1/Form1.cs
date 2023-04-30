@@ -77,28 +77,6 @@ namespace Assignment2._1
         private void textBox6_TextChanged(object sender, EventArgs e) { }
     }
 
-    public class UserFileReader
-    {
-        public string UserFileName { get; set; }
-
-        public string readData()
-        {
-            string content = "";
-
-            try
-            {
-                content = File.ReadAllText(UserFileName);
-            }
-            catch (IOException e)
-            {
-                // Handle the exception
-                MessageBox.Show("An error occurred while reading the file: " + e.Message);
-            }
-
-            return content;
-        }
-    }
-
     class UserParser
     {
         public string Raw_file_data;
